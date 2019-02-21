@@ -50,10 +50,10 @@ class App extends Component {
 
   submitShutdown = event => {
     event.preventDefault();
-    setTimeout(
-      () => fetch("http://192.168.0.12:1203/shutdown"),
-      this.state.minutes * 60 * 1000
-    );
+    fetch("http://192.168.0.12:1203/shutdown", {
+      method: "post",
+      body: JSON.stringify({ delay: this.state.minutes })
+    });
     console.log("yolo");
   };
 
